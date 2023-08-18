@@ -1,6 +1,7 @@
 import React,{useEffect,useRef} from 'react';
 import {View,Text,Animated,TouchableOpacity} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
+import RCTAsyncStorage from './RCTAsyncStorage';
 
 const Splash=()=>{
     const navigation=useNavigation();
@@ -15,14 +16,14 @@ const Splash=()=>{
 
            setTimeout(()=>{
            startAnimation();
-            navigation.navigate('SignUp');
+            navigation.navigate('Login');
         },1500);
     },[]);
     return (
-    <View style={{flex:1,justifyContent:'center',alignItems:'center',backgroundColor:'black'}}>
+    <View style={{flex:1,justifyContent:'center',alignItems:'center',backgroundColor:'#232B2B'}}>
         <Animated.View style={[{transform:[{translateY:animation.interpolate({
             inputRange:[0,1],
-            outputRange:[0,-350],})
+            outputRange:[0,-300],})
                 }
             ]}
         ]}>
