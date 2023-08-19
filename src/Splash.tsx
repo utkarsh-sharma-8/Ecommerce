@@ -1,8 +1,6 @@
-import React,{useEffect,useRef} from 'react';
-import {View,Text,Animated,TouchableOpacity} from 'react-native';
-import {useNavigation} from '@react-navigation/native';
-import RCTAsyncStorage from './RCTAsyncStorage';
-
+import { useNavigation } from '@react-navigation/native';
+import React, { useEffect, useRef } from 'react';
+import { Animated, Text, View } from 'react-native';
 const Splash=()=>{
     const navigation=useNavigation();
     const animation=useRef(new Animated.Value(0)).current;
@@ -13,11 +11,10 @@ const Splash=()=>{
         }).start();
     }
     useEffect(()=>{
-
-           setTimeout(()=>{
-           startAnimation();
+        setTimeout(()=>{
+            startAnimation();
             navigation.navigate('Login');
-        },1500);
+        },1200);
     },[]);
     return (
     <View style={{flex:1,justifyContent:'center',alignItems:'center',backgroundColor:'#232B2B'}}>

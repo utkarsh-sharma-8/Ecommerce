@@ -1,9 +1,8 @@
-import React,{useState} from 'react';
-import {View,Text,TextInput,TouchableOpacity} from 'react-native';
-import Background from './Background';
-import {FIREBASE_AUTH} from '../FirebaseConfig';
-import {signInWithEmailAndPassword} from 'firebase/auth';
 import { useNavigation } from '@react-navigation/native';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import React, { useState } from 'react';
+import { Alert, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { FIREBASE_AUTH } from '../FirebaseConfig';
 
 const Login=()=>{
     const [email,setEmail]=useState('');
@@ -15,9 +14,14 @@ const Login=()=>{
         try {
             const response =await signInWithEmailAndPassword(auth,email,password);
             console.log(response);
+            navigation.navigate('Home')
 
         }catch(error){
-            console.log(error);
+            if(error='auth/user-not-found)'){
+                Alert.alert('Incorrect Username/Password');
+            }else{
+                console.log(error);
+            }
         }
     }
 
