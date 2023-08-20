@@ -7,14 +7,29 @@ import SignUp from './SignUp';
 import Splash from './Splash';
 
 const Stack = createNativeStackNavigator();
+const insideStack=createNativeStackNavigator();
+function InsideLayout() {
+  return(
+    <insideStack.Navigator>
+      <insideStack.Screen name='Inside' component={Home}/>
+    </insideStack.Navigator>
+  );
+}
 const AppNavigator=()=>{ 
+  // const [user,setUser]=useState <User |null>(null);
+  // useEffect(()=>{
+  //   onAuthStateChanged(FIREBASE_AUTH,(user)=>{
+  //     console.log('user',user);
+  //     setUser(user);
+  //   });
+  // },[]);
     return (
       <NavigationContainer>
         <Stack.Navigator initialRouteName='Splash'>
-        <Stack.Screen name="Splash" component={Splash} options={{headerShown:false}}/>
-        <Stack.Screen name="Login" component={Login} options={{headerShown:false}}/>
-        <Stack.Screen name="SignUp" component={SignUp} options={{headerShown:false}}/>
-        <Stack.Screen name="Home" component={Home} options={{headerShown:false}}/>
+          <Stack.Screen name="Splash" component={Splash} options={{headerShown:false}}/>
+          <Stack.Screen name="Login" component={Login} options={{headerShown:false}}/>
+          <Stack.Screen name="SignUp" component={SignUp} options={{headerShown:false}}/>
+          <Stack.Screen name="Home" component={Home} options={{headerShown:false}}/>
         </Stack.Navigator>
       </NavigationContainer>
     )
