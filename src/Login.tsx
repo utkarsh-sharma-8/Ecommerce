@@ -11,6 +11,7 @@ const Login=()=>{
     const navigation=useNavigation();
 
     const SignIn=async()=>{
+//this is new documentation for firebase v9 or greater.If wanted to login with existing user credentials//
         try {
             const response =await signInWithEmailAndPassword(auth,email,password);
             console.log(response);
@@ -36,7 +37,7 @@ const Login=()=>{
                 <TouchableOpacity style={{marginTop:100}} onPress={SignIn}>
                     <Text style={{fontSize:30,color:'white',marginLeft:170}}>Login</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={()=>{navigation.navigate('SignUp')}}>
+                <TouchableOpacity onPress={()=>{navigation.navigate('SignUp')}}>{/*to navigate to signup page */}
                     <Text style={{color:'blue',fontSize:15,fontWeight:'bold',marginLeft:110}}>Do not have an account? SignUp</Text>
                 </TouchableOpacity>
             </View>

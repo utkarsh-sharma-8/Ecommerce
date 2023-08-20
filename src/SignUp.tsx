@@ -14,6 +14,7 @@ const SignUp=()=>{
     const navigation=useNavigation();
     const auth = FIREBASE_AUTH;
     const firestore=FIREBASE_DB;
+//to store the user email mobile no. and name in database.// 
     const registerUser=async()=>{
         const userId=uuid.v4();
         const doc=await addDoc(collection(FIREBASE_DB,'users'),{
@@ -24,6 +25,7 @@ const SignUp=()=>{
 
         });
     }
+//to validate to textinput if any box is empty or password and confirm password matches or not
     const validate=()=>{
         let isValid=true;
         if(name==""){
@@ -46,6 +48,8 @@ const SignUp=()=>{
         }
         return isValid;
     }
+
+//to sign up the using email and password and authenticate the user//
     const signUp=async()=>{
         try {
             const response =await createUserWithEmailAndPassword(auth,email,password);
@@ -81,6 +85,7 @@ const SignUp=()=>{
                 <TextInput onChangeText={(text)=>setConfirmPassword(text)}style={{borderWidth:2,borderColor:'white',borderRadius:20,marginLeft:80,width:250,marginTop:30,fontSize:15,color:'white',paddingLeft:20}} placeholder='Confirm Password' placeholderTextColor='white' value={confirmPassword}/>
                 <TouchableOpacity style={{marginTop:30}}
                 onPress={()=>{
+{/*if any of the text input is empty or not if not only then run signup */}
                     if(validate()){
                         signUp();
                     }else{
@@ -90,8 +95,8 @@ const SignUp=()=>{
                 >
                         <Text style={{fontSize:30,color:'white',marginLeft:170}}>SignIn</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={()=>{navigation.navigate('Login')}}>
-                        <Text style={{color:'#73C2FB',fontSize:15,fontWeight:'bold',marginLeft:110}}>Already have an account? SignUp</Text>
+                    <TouchableOpacity onPress={()=>{navigation.navigate('Login')}}>{/*if user already haave account then go to login page */}
+                        <Text style={{color:'#73C2FB',fontSize:15,fontWeight:'bold',marginLeft:110}}>Already have an account? Login</Text>
                     </TouchableOpacity>
             </View>
 
