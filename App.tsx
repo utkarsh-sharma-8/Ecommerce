@@ -2,7 +2,10 @@ import React from 'react';
 import AppNavigator from './src/AppNavigator';
 
 const App=()=>{
-    return <AppNavigator/>
+    return (<>
+        <AppNavigator/>
+    </>
+    )
 };
 
 export default App;
