@@ -1,11 +1,8 @@
 import { useNavigation } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { User, onAuthStateChanged } from 'firebase/auth';
 import React, { useEffect, useRef, useState } from 'react';
 import { Animated, Text, View } from 'react-native';
 import { FIREBASE_AUTH } from '../FirebaseConfig';
-
-const Stack = createNativeStackNavigator();
 const Splash=()=>{
 // the User is imported from firebase auth and is provided one value null if device is not logged in
     const [user,setUser]=useState <User | null>(null);
