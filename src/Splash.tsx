@@ -37,7 +37,7 @@ const Splash=()=>{
 {/*output range tells where the final positon is going to be -376 shows it goes by 376 pixels */}
             <Animated.View style={[{transform:[{translateY:animation.interpolate({
                 inputRange:[0,1],
-                outputRange:[0,-376],})
+                outputRange:[0,-356],})
                     }
                 ]}
             ]}>

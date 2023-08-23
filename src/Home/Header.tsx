@@ -1,24 +1,13 @@
 import React, { useState } from 'react';
-import { Image, SafeAreaView, ScrollView, StyleSheet, TextInput, View } from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialIcons';
+import { Image, SafeAreaView, ScrollView, StyleSheet, View } from 'react-native';
 const Header=()=> { 
   const [input, setInput] = useState('');
     return (
         <View style={{margin: 15, width: '100%'}}>
-        <View
-          style={Styles.searchView}>
-          <Icon name="search" size={20} color="black" />
-          <TextInput
-            value={input}
-            onChangeText={text => setInput(text)}
-            style={{fontSize: 15}}
-            placeholder="Search"
-          />
-        </View>
-        <View
-          style={{
-            backgroundColor:'#363636'
-          }}>
+        {/* <View>
+          <Text style={Styles.top}> Ecommerce </Text>
+        </View> */}
+        <View>
           <SafeAreaView>
             <ScrollView horizontal={true}>
               <Image
@@ -61,5 +50,10 @@ const Styles=StyleSheet.create({
       backgroundColor: '#d9dbda',
       borderRadius: 10,
       alignItems: 'center',
+  },
+  top:{
+    color:'white',
+    fontSize:40,
+    alignSelf:'center'
   }
 })

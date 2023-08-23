@@ -25,4 +25,4 @@ const Search=({data,input,setInput})=> {
 }
 
 
-export default Search
+export default Search;
