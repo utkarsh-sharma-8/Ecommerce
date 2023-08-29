@@ -1,34 +1,27 @@
 import { useNavigation } from '@react-navigation/native';
-import React, { useState } from 'react';
+import React from 'react';
 import {
   FlatList,
   Image,
-  SafeAreaView,
   StyleSheet,
   Text,
   TouchableOpacity,
   View,
 } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { useDispatch, useSelector } from 'react-redux';
-import { addProductToMyCart, deleteMyCartItem, removeMyCartItem } from '../redux/MyCartSlice';
+import {
+  addProductToMyCart,
+  deleteMyCartItem,
+  removeMyCartItem,
+} from '../redux/MyCartSlice';
 import { decreaseQty, increaseQty } from '../redux/MyProductSlice';
-const Electronics = () => {
-  const navigation = useNavigation();
-  const dispatch = useDispatch();
-  const myProducts = useSelector(state => state.product);
+
+const MyCart = () => {
   const myCartItems = useSelector(state => state.cart);
-
-  console.log('added items', myCartItems);
-  const getTotal = () => {
-    let total = 0;
-    myCartItems.map(item => {
-      total = total + item.qty * item.price;
-    });
-    return total;
-  };
-  const [input, setInput] = useState('');
-
-  const RenderItem = ({item, index}) => {
+  const dispatch = useDispatch();
+  const navigation = useNavigation();
+  const RenderItem = ({item}) => {
     return (
       <View>
         <View style={Style.imageText}>
@@ -40,18 +33,6 @@ const Electronics = () => {
               {item.description.substring(0, 100) + '...'}
             </Text>
             <View style={{flexDirection: 'row'}}>
-              {item.qty == 0 ? (
-                <TouchableOpacity
-                  style={Style.opacity}
-                  onPress={() => {
-                    dispatch(addProductToMyCart(item));
-                    dispatch(increaseQty(item.id));
-                  }}>
-                  <Text style={{fontSize: 18, color: 'black'}}>
-                    Add to cart
-                  </Text>
-                </TouchableOpacity>
-              ) : null}
               {item.qty == 0 ? null : (
                 <TouchableOpacity
                   style={Style.plusMinus}
@@ -96,65 +77,20 @@ const Electronics = () => {
     );
   };
   return (
-    <View style={{backgroundColor: '#A78295'}}>
-      <View>
-        <Text>Welcome</Text>
-      </View>
-      <SafeAreaView>
-        <FlatList data={myProducts} renderItem={RenderItem} />
-      </SafeAreaView>
-      {myCartItems.length > 0 ? (
-        <View
-          style={{
-            width: '100%',
-            height: 80,
-            backgroundColor: 'white',
-            position: 'absolute',
-            bottom: 0,
-            flexDirection: 'row',
-          }}>
-          <View
-            style={{
-              width: '50%',
-              justifyContent: 'center',
-              alignItems: 'center',
-              height: '100%',
-            }}>
-            <Text style={{fontSize: 16, fontWeight: '700', color: 'black'}}>
-              {'added items' + '(' + myCartItems.length + ')'}
-            </Text>
-            <Text style={{marginBottom: 10}}>{'Total:' + getTotal()}</Text>
-          </View>
-          <View
-            style={{
-              width: '50%',
-              justifyContent: 'center',
-              alignItems: 'center',
-              height: '100%',
-            }}>
-            <TouchableOpacity
-              style={{
-                width: '70%',
-                backgroundColor: 'green',
-                justifyContent: 'center',
-                alignItems: 'center',
-                borderRadius: 7,
-                height: 40,
-                marginBottom: 10,
-              }}
-              onPress={() => {
-                navigation.navigate('MyCart');
-              }}>
-              <Text style={{color: 'white'}}>View Cart</Text>
-            </TouchableOpacity>
-          </View>
+    <View style={{flex: 1}}>
+      <View style={{backgroundColor: '#A78295'}}>
+        <View>
+          <Text>Welcome</Text>
         </View>
-      ) : null}
+        <SafeAreaView>
+          <FlatList data={myCartItems} renderItem={RenderItem} />
+        </SafeAreaView>
+      </View>
     </View>
   );
 };
 
-export default Electronics;
+export default MyCart;
 
 const Style = StyleSheet.create({
   name: {

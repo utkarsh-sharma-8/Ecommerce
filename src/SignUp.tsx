@@ -95,7 +95,7 @@ const SignUp=()=>{
                 >
                         <Text style={{fontSize:30,color:'white',marginLeft:170}}>SignIn</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={()=>{navigation.navigate('Login')}}>{/*if user already haave account then go to login page */}
+                    <TouchableOpacity onPress={()=>{navigation.navigate('Login')}}>{/*if user already have account then go to login page */}
                         <Text style={{color:'#73C2FB',fontSize:15,fontWeight:'bold',marginLeft:110}}>Already have an account? Login</Text>
                     </TouchableOpacity>
             </View>

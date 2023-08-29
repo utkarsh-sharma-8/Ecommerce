@@ -2,6 +2,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React from 'react';
 import Home from './Home/Home';
+import MyCart from './Home/MyCart';
 import Electronics from './HomeNext/Electronics';
 import Login from './Login';
 import SignUp from './SignUp';
@@ -18,6 +19,8 @@ const AppNavigator=()=>{
           <Stack.Screen name="SignUp" component={SignUp} options={{headerShown:false}}/>
           <Stack.Screen name="Home" component={Home} options={{headerShown:false}}/>
           <Stack.Screen name="Electronics" component={Electronics} options={{headerShown:false}}/>
+          <Stack.Screen name="MyCart" component={MyCart} options={{headerShown:true}}/>
+
 
         </Stack.Navigator>
       </NavigationContainer>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { SafeAreaView, ScrollView, StyleSheet, View } from 'react-native';
 import Header from './Header';
-import Main from './Main';
+import HomeMain from './HomeMain';
 
 const Home = () => {
   const [data, setData] = useState('');
@@ -11,7 +11,7 @@ const Home = () => {
       <SafeAreaView>
         <ScrollView>
           <Header/>
-          <Main/>
+          <HomeMain/>
         </ScrollView>
       </SafeAreaView>
     </View>

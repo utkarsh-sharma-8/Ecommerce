@@ -1,7 +1,7 @@
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { Image, SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-const Main = () => {
+const HomeMain = () => {
     const navigation=useNavigation();
   return (
     <View>
@@ -55,7 +55,7 @@ const Main = () => {
   )
 }
 
-export default Main;
+export default HomeMain;
 
 const Styles=StyleSheet.create({
     text:{
